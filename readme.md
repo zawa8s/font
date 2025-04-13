@@ -7,7 +7,7 @@ after downloading instαllation steps depends on your os:
 	or
 	go to bigttf-->115b-->fonts and open .ttf fonts 1by1 in font manager n instαll.
 2. android : instαll *115b .ttf (normal/regular/book) fonts please go to:
-	download some font[bigttf-->115b-->fonts](https://github.com/zawa8s/font/tree/main/bigttf/115b)
+	download some font [bigttf-->115b-->fonts](https://github.com/zawa8s/font/tree/main/bigttf/115b)
 	in your android phone. check in your phone model how to instαll fonts.
 	most android phone allow zfont3 app to instαll font.
 	so first instαll zfont3 app and instαll font using this app.
