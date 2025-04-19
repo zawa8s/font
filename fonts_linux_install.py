@@ -7,47 +7,34 @@ import getpass
 ############################
 def main():
     thisdir = os.getcwd()
-    fontdir = thisdir
-	############################
-    bigttfdir = os.path.join(fontdir, "bigttf")
-    bigwoffdir = os.path.join(fontdir, "bigwoff")
-    smallttfdir = os.path.join(fontdir, "smallttf")
-    smallwoffdir = os.path.join(fontdir, "smallwoff")
-    hsciittfdir = os.path.join(fontdir, "hsciittf")
-    hsciiwoffdir = os.path.join(fontdir, "hsciiwoff")
-	############################
-    print(f"current directory is : {thisdir}")    
+    ttfhsciidir = f"{thisdir}/ttf/hscii"
+    print(f"current directory is : {thisdir}. ttfhscii dir is {ttfhsciidir}")    
     key = input("Press 'r' to install/upgrade bigttf/smallttf/hsciittf fonts in this Linux system. It will ask for sudo password.\n")    
     if key == 'r':
-        # Remove old hfont in 5 system font directories
-        print("Removing hfont in 5 system font directories.")
+        # Remove old hscii in 5 system font directories
+        print("Removing hscii in 5 system font directories.")
         try:
-            os.system("rm -rf ~/.fonts/hfont ~/.local/share/fonts/hfont")
-            os.system("sudo rm -rf /usr/local/share/fonts/hfont /usr/share/fonts/truetype/hfont /root/.local/share/fonts/hfont")
+            os.system("rm -rf ~/.fonts/hscii ~/.local/share/fonts/hscii")
+            os.system("sudo rm -rf /usr/local/share/fonts/hscii /usr/share/fonts/truetype/hscii /root/.local/share/fonts/hscii")
         except Exception as e:
             print(f"Error removing old fonts: {e}")
-
-        # Create hfont directories in 5 system font directories
-        os.makedirs(os.path.expanduser("~/.fonts/hfont"), exist_ok=True)
-        os.makedirs(os.path.expanduser("~/.local/share/fonts/hfont"), exist_ok=True)
-        os.system("sudo mkdir -p /usr/local/share/fonts/hfont /usr/share/fonts/truetype/hfont /root/.local/share/fonts/hfont")
-
-        # Copy new hfont
-        print("Copying bigttf/smallttf/hsciittf fonts in 5 share/fonts.")
+###########################            
+        # Copy new hscii
+        print(f"Copying {ttfhsciidir} (hawing hscii fonts ttf files) in 5 share/fonts (linuksmint system fonts dirs).")
         try:
-            os.system(f"cp -r {fontdir}/*ttf ~/.fonts/hfont/")
-            os.system(f"cp -r {fontdir}/*ttf ~/.local/share/fonts/hfont/")
-            os.system(f"sudo cp -r {fontdir}/*ttf /usr/local/share/fonts/hfont/")
-            os.system(f"sudo cp -r {fontdir}/*ttf /usr/share/fonts/truetype/hfont/")
-            os.system(f"sudo cp -r {fontdir}/*ttf /root/.local/share/fonts/hfont/")
+            os.system(f"cp -r {ttfhsciidir} ~/.fonts/")
+            os.system(f"cp -r {ttfhsciidir}/*ttf ~/.local/share/fonts/")
+            os.system(f"sudo cp -r {ttfhsciidir}/*ttf /usr/local/share/fonts/")
+            os.system(f"sudo cp -r {ttfhsciidir}/*ttf /usr/share/fonts/truetype/")
+            os.system(f"sudo cp -r {ttfhsciidir}/*ttf /root/.local/share/fonts/")
         except Exception as e:
             print(f"Error copying fonts: {e}")
 
         # Installing copied fonts
-        print("Installing copied fonts.")
+        print(f"Installing copied hscii fonts (from {ttfhsciidir}) in linuksmint system.")
         os.system("fc-cache -fv")
         os.system("sudo fc-cache -fv")
-        print(f"Font installation done: {thisdir}")
+        print(f"Font installation done: now in {thisdir}")
     else:
         print(f"Pressed other key {key}. So not installed/upgraded bigttf/smallttf/hsciittf fonts in this Linux system.")
         print("Stopping script.")
